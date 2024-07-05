@@ -12,14 +12,14 @@
                 <img src="https://via.placeholder.com/60" alt="" />
               </div>
               <div class="flex-grow-1 ms-3">
-                <h5>
-                  {{ submissions[1].title }}
+                <h5 v-once>
+                  {{ submissions[0].title }}
                   <span class="float-end text-primary" style="cursor: pointer"
-                    ><i class="fa fa-chevron-up"></i> <strong>16</strong></span
+                    ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span
                   >
                 </h5>
-                <div>Eine Nudelgericht mit Hackfleischsoße.</div>
-                <small class="text-muted">Eingereicht von: Italien</small>
+                <div>{{ submissions[0].desc }}</div>
+                <small class="text-muted">Eingereicht von: {{ submissions[0].desc }}</small>
               </div>
             </div>
           </div>
