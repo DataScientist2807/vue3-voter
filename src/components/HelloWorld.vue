@@ -19,6 +19,7 @@
                   >
                 </h5>
                 <div>{{ submissions[0].desc }}</div>
+                <div v-html="submissions[0].desc"></div>
                 <small class="text-muted">Eingereicht von: {{ submissions[0].desc }}</small>
               </div>
             </div>
@@ -38,7 +39,7 @@ export default {
         {
           id: 1,
           title: "Spaghetti Bolognese",
-          desc: "Ein Nudelgericht mit Hackfleischsoße.",
+          desc: "Ein Nudelgericht <strong> mit </strong> Hackfleischsoße.",
           votes: 16,
           author: "Italien",
           img: "https://via.placeholder.com/64",
