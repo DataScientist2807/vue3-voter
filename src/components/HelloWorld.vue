@@ -12,13 +12,15 @@
                 <img v-bind:src="submissions[0].img" alt="" />
               </div>
               <div class="flex-grow-1 ms-3">
-
-                <!-- v-on:click="submissions[0].votes++;" -->
                 <h5>
                   {{ submissions[0].title }}
-                  <span class="float-end text-primary" 
+                  <!-- <span class="float-end text-primary" 
                   style="cursor: pointer"
-                  v-on:click="upvote('Stimme abgeben', $event), logConsole('yes')"         
+                  v-on:click.right="upvote('Stimme abgeben', $event), logConsole('yes')"         
+                    ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span -->
+                    <span class="float-end text-primary" 
+                  style="cursor: pointer"
+                  v-on:click.right="upvote()"         
                     ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span
                   >
                 </h5>
@@ -76,7 +78,6 @@ export default {
   },
   methods: {
     upvote(infotext, event) {
-      /* console.log(this) */
       this.submissions[0].votes++
       console.log(infotext)
       console.log(event)
