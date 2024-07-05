@@ -9,7 +9,7 @@
           <div class="card-body">
             <div class="d-flex">
               <div class="d-shrink-0">
-                <img src="https://via.placeholder.com/60" alt="" />
+                <img v-bind:src="submissions[0].img" alt="" />
               </div>
               <div class="flex-grow-1 ms-3">
                 <h5 v-once>
@@ -19,7 +19,6 @@
                   >
                 </h5>
                 <div>{{ submissions[0].desc }}</div>
-                <div v-html="submissions[0].desc"></div>
                 <small class="text-muted">Eingereicht von: {{ submissions[0].desc }}</small>
               </div>
             </div>
@@ -39,10 +38,10 @@ export default {
         {
           id: 1,
           title: "Spaghetti Bolognese",
-          desc: "Ein Nudelgericht <strong> mit </strong> Hackfleischsoße.",
+          desc: "Ein Nudelgericht mit Hackfleischsoße.",
           votes: 16,
           author: "Italien",
-          img: "https://via.placeholder.com/64",
+          img: "bolognese.jpg",  
         },
         {
           id: 2,
@@ -50,7 +49,7 @@ export default {
           desc: "Ein dünnes Schnitzel aus Kalbfleisch.",
           votes: 5,
           author: "Österreich",
-          img: "https://via.placeholder.com/64",
+          img: "schnitzel.jpg",
         },
         {
           id: 3,
@@ -58,7 +57,7 @@ export default {
           desc: "Das kaiserliche Gericht.",
           votes: 20,
           author: "China",
-          img: "https://via.placeholder.com/64",
+          img: "ente.jpg",
         },
         {
           id: 4,
@@ -66,7 +65,7 @@ export default {
           desc: "Ein traditionelles Ragout.",
           votes: 24,
           author: "Ungarn",
-          img: "https://via.placeholder.com/64",
+          img: "gulasch.jpg",
         },
       ],
     };
