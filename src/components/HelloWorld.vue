@@ -4,7 +4,9 @@
       <div class="col-xl-4 offset-xl-4">
         <div class="card mt-5">
           <div class="card-header">
-            <h2 class="card-title">Stimme jetzt ab!</h2>
+            <h2 class="card-title">Stimme jetzt ab!
+              <span class="float-end">16 Stimmen</span>
+            </h2>
           </div>
           <div class="card-body">
             <div class="d-flex">
