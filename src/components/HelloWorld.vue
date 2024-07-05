@@ -80,24 +80,11 @@ export default {
       ],
     };
   },
-  /* computed: {
-    totalVotes() {
-      console.log("Computed property ausgeführt");
-      return this.submissions.reduce((totalVotes, submission) => {
-        return totalVotes + submission.votes;
-      }, 0);
-    },
-  }, */
+
   methods: {
     upvote() {
       this.submissions[0].votes++;
     },
-
-    /* totalVotes() {
-      return this.submissions.reduce((totalVotes, submission) => {
-        return totalVotes + submission.votes
-      }, 0)
-    } */
   },
   watch: {
     submissions: {
@@ -116,7 +103,6 @@ export default {
   }
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
