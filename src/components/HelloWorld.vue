@@ -18,7 +18,7 @@
                   {{ submissions[0].title }}
                   <span class="float-end text-primary" 
                   style="cursor: pointer"
-                  v-on:click="upvote('Stimme abgeben', $event)"         
+                  v-on:click="upvote('Stimme abgeben', $event), logConsole('yes')"         
                     ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span
                   >
                 </h5>
@@ -80,6 +80,9 @@ export default {
       this.submissions[0].votes++
       console.log(infotext)
       console.log(event)
+    },
+    logConsole(text) {
+      console.log(text)
     }
   }
 };
