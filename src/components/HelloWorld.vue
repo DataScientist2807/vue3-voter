@@ -26,9 +26,6 @@
                   >
                 </h5>
                 <div>{{ submission.desc }}</div>
-                <!-- <ul>
-                    <li v-for="(value, key, index) in submission" :key="value.id"> {{ value }} {{ key }} {{ index }}</li>
-                  </ul> -->
                 <small class="text-muted"
                   >Eingereicht von: {{ submission.desc }}</small
                 >
@@ -83,7 +80,10 @@ export default {
       ],
     };
   },
+  computed:{
+    sortedSubmissions
 
+  },
   methods: {
     upvote() {
       this.submissions[0].votes++;
