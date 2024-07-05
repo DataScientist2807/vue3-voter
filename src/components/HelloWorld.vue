@@ -12,9 +12,13 @@
                 <img v-bind:src="submissions[0].img" alt="" />
               </div>
               <div class="flex-grow-1 ms-3">
-                <h5 v-once>
+
+                <!-- v-on:click="submissions[0].votes++;" -->
+                <h5>
                   {{ submissions[0].title }}
-                  <span class="float-end text-primary" style="cursor: pointer"
+                  <span class="float-end text-primary" 
+                  style="cursor: pointer"
+                  v-on:click="upvote"         
                     ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span
                   >
                 </h5>
@@ -70,6 +74,12 @@ export default {
       ],
     };
   },
+  methods: {
+    upvote() {
+      /* console.log(this) */
+      this.submissions[0].votes++
+    }
+  }
 };
 </script>
 
