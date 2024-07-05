@@ -43,6 +43,7 @@ export default {
   name: "Voter",
   data() {
     return {
+      totalVotes: 0,
       submissions: [
         {
           id: 1,
@@ -79,14 +80,14 @@ export default {
       ],
     };
   },
-  computed: {
+  /* computed: {
     totalVotes() {
       console.log("Computed property ausgeführt");
       return this.submissions.reduce((totalVotes, submission) => {
         return totalVotes + submission.votes;
       }, 0);
     },
-  },
+  }, */
   methods: {
     upvote() {
       this.submissions[0].votes++;
@@ -98,6 +99,16 @@ export default {
       }, 0)
     } */
   },
+  watch: {
+    submissions(newValue, oldValue) {
+      console.log(newValue);
+      console.log(oldValue);
+    },
+    totalVotes(newValue, oldValue) {
+      console.log(newValue);
+      console.log(oldValue);
+    }
+  }
 };
 </script>
 
