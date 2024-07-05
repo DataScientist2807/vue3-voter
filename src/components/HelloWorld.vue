@@ -10,27 +10,36 @@
             </h2>
           </div>
           <div class="card-body">
-            <div class="d-flex"   v-for="(submission, index) in sortedSubmissions" :key="submission.id">
-              <div class="d-shrink-0">
-                <img v-bind:src="submission.img" alt="" />
-              </div>
-              <div class="flex-grow-1 ms-3">
-                <h5>
-                  {{ submission.title }} {{ index }}
-                  <span
-                    class="float-end text-primary"
-                    style="cursor: pointer"
-                    v-on:click="upvote(submission.id)"
-                    ><i class="fa fa-chevron-up"></i>
-                    <strong>{{ submission.votes }} </strong></span
+            <template v-for="(submission, index) in sortedSubmissions"
+            :key="submission.id">
+              <div
+                class="d-flex"
+                
+              >
+                <div class="d-shrink-0">
+                  <img v-bind:src="submission.img" alt="" />
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5>
+                    {{ submission.title }} {{ index }}
+                    <span
+                      class="float-end text-primary"
+                      style="cursor: pointer"
+                      v-on:click="upvote(submission.id)"
+                      ><i class="fa fa-chevron-up"></i>
+                      <strong>{{ submission.votes }} </strong></span
+                    >
+                  </h5>
+                  <div>{{ submission.desc }}</div>
+                  <small class="text-muted"
+                    >Eingereicht von: {{ submission.desc }}</small
                   >
-                </h5>
-                <div>{{ submission.desc }}</div>
-                <small class="text-muted"
-                  >Eingereicht von: {{ submission.desc }}</small
-                >
+                </div>
               </div>
-            </div>
+              <hr />
+            </template>
+
+           
           </div>
         </div>
       </div>
@@ -80,7 +89,7 @@ export default {
       ],
     };
   },
-  computed:{
+  computed: {
     sortedSubmissions() {
       return this.submissions.sort((a, b) => {
         return b.votes - a.votes;
@@ -92,17 +101,17 @@ export default {
       const submission = this.submissions.find(
         (submission) => submission.id === submissionId
       );
-      submission.votes++
+      submission.votes++;
     },
   },
   watch: {
     submissions: {
       handler(newValue, oldValue) {
-        console.log(newValue)
-        console.log(oldValue)
+        console.log(newValue);
+        console.log(oldValue);
         this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
-          return totalVotes + submission.votes
-        }, 0)
+          return totalVotes + submission.votes;
+        }, 0);
       },
       deep: true,
       immediate: true,
@@ -110,8 +119,8 @@ export default {
     totalVotes(newValue, oldValue) {
       console.log(newValue);
       console.log(oldValue);
-    }
-  }
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
