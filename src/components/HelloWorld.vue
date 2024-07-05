@@ -20,7 +20,7 @@
                   <span
                     class="float-end text-primary"
                     style="cursor: pointer"
-                    v-on:click="upvote()"
+                    v-on:click="upvote(submission.id)"
                     ><i class="fa fa-chevron-up"></i>
                     <strong>{{ submission.votes }} </strong></span
                   >
@@ -88,8 +88,11 @@ export default {
     },
   },
   methods: {
-    upvote() {
-      this.submissions[0].votes++;
+    upvote(submissionId) {
+      const submission = this.submissions.find(
+        (submission) => submission.id === submissionId
+      );
+      submission.votes++
     },
   },
   watch: {
