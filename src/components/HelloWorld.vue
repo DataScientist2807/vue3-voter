@@ -5,7 +5,7 @@
         <div class="card mt-5">
           <div class="card-header">
             <h2 class="card-title">Stimme jetzt ab!
-              <span class="float-end">16 Stimmen</span>
+              <span class="float-end">{{ totalVotes() }} Stimmen</span>
             </h2>
           </div>
           <div class="card-body">
@@ -16,13 +16,9 @@
               <div class="flex-grow-1 ms-3">
                 <h5>
                   {{ submissions[0].title }}
-                  <!-- <span class="float-end text-primary" 
-                  style="cursor: pointer"
-                  v-on:click.right="upvote('Stimme abgeben', $event), logConsole('yes')"         
-                    ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span -->
                     <span class="float-end text-primary" 
                   style="cursor: pointer"
-                  v-on:click.right="upvote()"         
+                  v-on:click="upvote()"         
                     ><i class="fa fa-chevron-up"></i> <strong>{{ submissions[0].votes }} </strong></span
                   >
                 </h5>
@@ -79,14 +75,15 @@ export default {
     };
   },
   methods: {
-    upvote(infotext, event) {
+    upvote() {
       this.submissions[0].votes++
-      console.log(infotext)
-      console.log(event)
     },
-    logConsole(text) {
-      console.log(text)
+    totalVotes() {
+      return this.submissions.reduce((totalVotes, submission) => {
+        return totalVotes + submission.votes
+      }, 0)
     }
+    
   }
 };
 </script>
