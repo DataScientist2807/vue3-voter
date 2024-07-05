@@ -13,7 +13,7 @@
               </div>
               <div class="flex-grow-1 ms-3">
                 <h5>
-                  Spaghetti Bolognese
+                  {{ submissions[1].title }}
                   <span class="float-end text-primary" style="cursor: pointer"
                     ><i class="fa fa-chevron-up"></i> <strong>16</strong></span
                   >
