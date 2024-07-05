@@ -100,9 +100,14 @@ export default {
     } */
   },
   watch: {
-    submissions(newValue, oldValue) {
-      console.log(newValue);
-      console.log(oldValue);
+    submissions: {
+      handler(newValue, oldValue) {
+        this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
+          return totalVotes + submission.votes
+        }, 0)
+      },
+      deep: true,
+      immediate: true,
     },
     totalVotes(newValue, oldValue) {
       console.log(newValue);
