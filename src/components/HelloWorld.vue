@@ -10,24 +10,24 @@
             </h2>
           </div>
           <div class="card-body">
-            <div class="d-flex">
+            <div class="d-flex"   v-for="(submission, index) in submissions" :key="submission.id">
               <div class="d-shrink-0">
-                <img v-bind:src="submissions[0].img" alt="" />
+                <img v-bind:src="submission.img" alt="" />
               </div>
               <div class="flex-grow-1 ms-3">
                 <h5>
-                  {{ submissions[0].title }}
+                  {{ submission.title }} {{ index }}
                   <span
                     class="float-end text-primary"
                     style="cursor: pointer"
                     v-on:click="upvote()"
                     ><i class="fa fa-chevron-up"></i>
-                    <strong>{{ submissions[0].votes }} </strong></span
+                    <strong>{{ submission.votes }} </strong></span
                   >
                 </h5>
-                <div>{{ submissions[0].desc }}</div>
+                <div>{{ submission.desc }}</div>
                 <small class="text-muted"
-                  >Eingereicht von: {{ submissions[0].desc }}</small
+                  >Eingereicht von: {{ submission.desc }}</small
                 >
               </div>
             </div>
@@ -89,6 +89,8 @@ export default {
   watch: {
     submissions: {
       handler(newValue, oldValue) {
+        console.log(newValue)
+        console.log(oldValue)
         this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
           return totalVotes + submission.votes
         }, 0)
