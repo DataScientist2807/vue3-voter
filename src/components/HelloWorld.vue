@@ -10,7 +10,7 @@
             </h2>
           </div>
           <div class="card-body">
-            <div class="d-flex"   v-for="(submission, index) in submissions" :key="submission.id">
+            <div class="d-flex"   v-for="(submission, index) in sortedSubmissions" :key="submission.id">
               <div class="d-shrink-0">
                 <img v-bind:src="submission.img" alt="" />
               </div>
@@ -81,8 +81,11 @@ export default {
     };
   },
   computed:{
-    sortedSubmissions
-
+    sortedSubmissions() {
+      return this.submissions.sort((a, b) => {
+        return b.votes - a.votes;
+      });
+    },
   },
   methods: {
     upvote() {
