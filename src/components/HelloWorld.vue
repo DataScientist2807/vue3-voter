@@ -3,44 +3,20 @@
     <div class="row">
       <div class="col-xl-4 offset-xl-4">
         <div class="card mt-5">
-<!--           <div class="card-header" v-bind:class="{ 'bg-primary': totalVotes > 50, 'text-white': totalVotes > 50 }"> -->  
           <div class="card-header" v-bind:class="cardHeaderBackgroundColor">
-              <!-- <h2 class="card-title" v-bind:style="{ fontSize: totalVotes + 'px' </h2>}"> -->
-                <h2 class="card-title" v-bind:style="cardTitleFontSize">
+            <h2 class="card-title" v-bind:style="cardTitleFontSize">
               Stimme jetzt ab!
               <span class="float-end">{{ totalVotes }} Stimmen</span>
             </h2>
           </div>
           <div class="card-body">
-            <template v-for="(submission) in sortedSubmissions"
-            :key="submission.id">
-              <div
-                class="d-flex" 
-              >
-                <div class="d-shrink-0">
-                  <img v-bind:src="submission.img" alt="" />
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5>
-                    {{ submission.title }}
-                    <span
-                      class="float-end text-primary"
-                      style="cursor: pointer"
-                      v-on:click="upvote(submission.id)"
-                      ><i class="fa fa-chevron-up"></i>
-                      <strong>{{ submission.votes }} </strong></span
-                    >
-                  </h5>
-                  <div>{{ submission.desc }}</div>
-                  <small class="text-muted"
-                    >Eingereicht von: {{ submission.desc }}</small
-                  >
-                </div>
-              </div>
+            <template
+              v-for="submission in sortedSubmissions"
+              :key="submission.id"
+            >
+              <submission-list-item></submission-list-item>
               <hr />
             </template>
-
-           
           </div>
         </div>
       </div>
@@ -49,8 +25,10 @@
 </template>
 
 <script>
+import SubmissionListItem from "./SubmissionListItem";
 export default {
   name: "Voter",
+  components: SubmissionListItem,
   data() {
     return {
       submissions: [
@@ -101,22 +79,15 @@ export default {
       }, 0);
     },
     cardHeaderBackgroundColor() {
-      /* return {
-        'bg-primary': this.totalVotes >= 50,
-        'text-white':  this.totalVotes >= 50
-        Alternative
-        'bg-primary text-white': this.totalVotes >= 50
-      } */
-        // Array schreibweise
-        if (this.totalVotes >= 50) {
-          return ['bg-primary', 'text-white']
-        } else {
-          return []
-        }
+      if (this.totalVotes >= 50) {
+        return ["bg-primary", "text-white"];
+      } else {
+        return [];
+      }
     },
     cardTitleFontSize() {
-      return { fontSize: this.totalVotes + 'px' }
-    }
+      return { fontSize: this.totalVotes + "px" };
+    },
   },
   methods: {
     upvote(submissionId) {
