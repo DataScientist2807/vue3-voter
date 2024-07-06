@@ -100,13 +100,18 @@ export default {
       }, 0);
     },
     cardHeaderBackgroundColor() {
-      return {
+      /* return {
         'bg-primary': this.totalVotes >= 50,
         'text-white':  this.totalVotes >= 50
-
-        // Alternative
-/*         'bg-primary text-white': this.totalVotes >= 50
- */      }
+        Alternative
+        'bg-primary text-white': this.totalVotes >= 50
+      } */
+        // Array schreibweise
+        if (this.totalVotes >= 50) {
+          return ['bg-primary', 'text-white']
+        } else {
+          return []
+        }
     }
   },
   methods: {
