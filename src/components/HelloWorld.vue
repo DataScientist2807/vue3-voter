@@ -14,7 +14,7 @@
               v-for="submission in sortedSubmissions"
               :key="submission.id"
             >
-              <submission-list-item></submission-list-item>
+              <submission-list-item v-bind:submission="submission"></submission-list-item>
               <hr />
             </template>
           </div>
@@ -29,6 +29,7 @@ import SubmissionListItem from "./SubmissionListItem";
 export default {
   name: "Voter",
   components: SubmissionListItem,
+  props: ['submission'],
   data() {
     return {
       submissions: [
