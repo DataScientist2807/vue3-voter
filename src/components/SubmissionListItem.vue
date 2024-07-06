@@ -25,6 +25,7 @@
 
 <script>
     export default {
-        name: "SubmissionListItem"
+        name: "SubmissionListItem",
+        props: ['submission'],
     }
 </script>

@@ -10,13 +10,13 @@
             </h2>
           </div>
           <div class="card-body">
-            <SubmissionListItem
+            <template
               v-for="submission in sortedSubmissions"
               :key="submission.id"
-              :submission="submission"
             >
+              <submission-list-item v-bind:submission="submission"></submission-list-item>
               <hr />
-            </SubmissionListItem>
+            </template>
           </div>
         </div>
       </div>
@@ -28,8 +28,8 @@
 import SubmissionListItem from "./SubmissionListItem.vue";
 export default {
   name: "Voter",
-  components: SubmissionListItem,
-  props: ['submission'],
+  components: { SubmissionListItem },
+
   data() {
     return {
       submissions: [
@@ -39,7 +39,7 @@ export default {
           desc: "Ein Nudelgericht mit Hackfleischsoße.",
           votes: 16,
           author: "Italien",
-          img: "bolognese.jpg",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg/220px-Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg",
         },
         {
           id: 2,
@@ -47,7 +47,7 @@ export default {
           desc: "Ein dünnes Schnitzel aus Kalbfleisch.",
           votes: 5,
           author: "Österreich",
-          img: "schnitzel.jpg",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg/220px-Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg",
         },
         {
           id: 3,
@@ -55,7 +55,7 @@ export default {
           desc: "Das kaiserliche Gericht.",
           votes: 20,
           author: "China",
-          img: "ente.jpg",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg/220px-Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg",
         },
         {
           id: 4,
@@ -63,7 +63,7 @@ export default {
           desc: "Ein traditionelles Ragout.",
           votes: 1,
           author: "Ungarn",
-          img: "gulasch.jpg",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg/220px-Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg",
         },
       ],
     };
