@@ -90,14 +90,7 @@ export default {
       return { fontSize: this.totalVotes + "px" };
     },
   },
-  methods: {
-    upvote(submissionId) {
-      const submission = this.submissions.find(
-        (submission) => submission.id === submissionId
-      );
-      submission.votes++;
-    },
-  },
+
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
