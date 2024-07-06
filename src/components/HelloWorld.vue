@@ -10,13 +10,13 @@
             </h2>
           </div>
           <div class="card-body">
-            <template
+            <SubmissionListItem
               v-for="submission in sortedSubmissions"
               :key="submission.id"
+              :submission="submission"
             >
-              <submission-list-item v-bind:submission="submission"></submission-list-item>
               <hr />
-            </template>
+            </SubmissionListItem>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import SubmissionListItem from "./SubmissionListItem";
+import SubmissionListItem from "./SubmissionListItem.vue";
 export default {
   name: "Voter",
   components: SubmissionListItem,
