@@ -10,18 +10,17 @@
             </h2>
           </div>
           <div class="card-body">
-            <template v-for="(submission, index) in sortedSubmissions"
+            <template v-for="(submission) in sortedSubmissions"
             :key="submission.id">
               <div
-                class="d-flex"
-                
+                class="d-flex" 
               >
                 <div class="d-shrink-0">
                   <img v-bind:src="submission.img" alt="" />
                 </div>
                 <div class="flex-grow-1 ms-3">
                   <h5>
-                    {{ submission.title }} {{ index }}
+                    {{ submission.title }}
                     <span
                       class="float-end text-primary"
                       style="cursor: pointer"
@@ -52,7 +51,6 @@ export default {
   name: "Voter",
   data() {
     return {
-      totalVotes: 0,
       submissions: [
         {
           id: 1,
@@ -95,6 +93,11 @@ export default {
         return b.votes - a.votes;
       });
     },
+    totalVotes() {
+      return this.submissions.reduce((totalVotes, submission) => {
+        return totalVotes + submission.votes;
+      }, 0);
+    },
   },
   methods: {
     upvote(submissionId) {
@@ -102,23 +105,6 @@ export default {
         (submission) => submission.id === submissionId
       );
       submission.votes++;
-    },
-  },
-  watch: {
-    submissions: {
-      handler(newValue, oldValue) {
-        console.log(newValue);
-        console.log(oldValue);
-        this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
-          return totalVotes + submission.votes;
-        }, 0);
-      },
-      deep: true,
-      immediate: true,
-    },
-    totalVotes(newValue, oldValue) {
-      console.log(newValue);
-      console.log(oldValue);
     },
   },
 };
