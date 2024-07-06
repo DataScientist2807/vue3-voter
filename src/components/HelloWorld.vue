@@ -5,7 +5,8 @@
         <div class="card mt-5">
 <!--           <div class="card-header" v-bind:class="{ 'bg-primary': totalVotes > 50, 'text-white': totalVotes > 50 }"> -->  
           <div class="card-header" v-bind:class="cardHeaderBackgroundColor">
-            <h2 class="card-title">
+              <!-- <h2 class="card-title" v-bind:style="{ fontSize: totalVotes + 'px' </h2>}"> -->
+                <h2 class="card-title" v-bind:style="cardTitleFontSize">
               Stimme jetzt ab!
               <span class="float-end">{{ totalVotes }} Stimmen</span>
             </h2>
@@ -112,6 +113,9 @@ export default {
         } else {
           return []
         }
+    },
+    cardTitleFontSize() {
+      return { fontSize: this.totalVotes + 'px' }
     }
   },
   methods: {
