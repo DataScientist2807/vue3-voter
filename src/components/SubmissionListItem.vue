@@ -25,12 +25,6 @@ export default {
   name: "SubmissionListItem",
   props: ["submission"],
   methods: {
-   /*  upvote(submissionId) {
-      const submission = this.submissions.find(
-        (submission) => submission.id === submissionId
-      );
-      submission.votes++;
-    }, */
     upvote() {
       this.submission.votes++;
     },
