@@ -89,7 +89,7 @@ export default {
   },
   computed: {
     sortedSubmissions() {
-      return this.submissions.sort((a, b) => {
+      return [...this.submissions].sort((a, b) => {
         return b.votes - a.votes;
       });
     },
