@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-xl-4 offset-xl-4">
         <div class="card mt-5">
-          <div class="card-header">
+<!--           <div class="card-header" v-bind:class="{ 'bg-primary': totalVotes > 50, 'text-white': totalVotes > 50 }"> -->  
+          <div class="card-header" v-bind:class="cardHeaderBackgroundColor">
             <h2 class="card-title">
               Stimme jetzt ab!
               <span class="float-end">{{ totalVotes }} Stimmen</span>
@@ -80,7 +81,7 @@ export default {
           id: 4,
           title: "Gulasch",
           desc: "Ein traditionelles Ragout.",
-          votes: 24,
+          votes: 1,
           author: "Ungarn",
           img: "gulasch.jpg",
         },
@@ -98,6 +99,15 @@ export default {
         return totalVotes + submission.votes;
       }, 0);
     },
+    cardHeaderBackgroundColor() {
+      return {
+        'bg-primary': this.totalVotes >= 50,
+        'text-white':  this.totalVotes >= 50
+
+        // Alternative
+/*         'bg-primary text-white': this.totalVotes >= 50
+ */      }
+    }
   },
   methods: {
     upvote(submissionId) {
